@@ -7,10 +7,13 @@ from langchain.schema.document import Document
 from get_embedding_function import get_embedding_function
 from langchain_chroma import Chroma
 from data.faq_data import load_faq_documents
+from dotenv import load_dotenv
 
 CHROMA_PATH = "chroma"
 DATA_PATH = "data"
 
+load_dotenv()  # Load variables from .env into environment
+api_key = os.getenv("OPENAI_API_KEY")
 
 def main():
     # Reset database if needed

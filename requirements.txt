@@ -7,3 +7,5 @@ pytest
 streamlit
 openai
 python-dotenv
+langchain_openai
+langchain_chroma

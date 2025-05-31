@@ -2,7 +2,7 @@ from langchain.schema.document import Document
 
 FAQ_QUESTIONS = [
     {
-        "question": "What are the different names or titles used for Krishna in the Gita?",
+        "question": "What are the all the different names or titles used for Krishna in the Gita?",
         "answer": (
             "Krishna, Vasudeva, Keshava, Govinda, Madhava, Hrishikesha, Janardana, Achyuta, "
             "Madhusudana, Jagannivasa, Parthasarathi, Yogeshwara, Bhagavan, Ishwara, Adideva, "
