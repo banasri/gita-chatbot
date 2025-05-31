@@ -5,7 +5,8 @@ from langchain.document_loaders.pdf import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
 from get_embedding_function import get_embedding_function
-from langchain_chroma import Chroma
+from chromadb import PersistentClient
+from langchain.vectorstores import Chroma
 from data.faq_data import load_faq_documents
 from dotenv import load_dotenv
 
@@ -62,10 +63,16 @@ def split_documents(documents: list[Document]):
 
 
 def add_to_chroma(chunks: list[Document]):
-    # Load the existing database.
+     # Use only the path, no Settings!
+    chroma_client = PersistentClient(path=CHROMA_PATH)
+
+    # LangChain Chroma wrapper
     db = Chroma(
-        persist_directory=CHROMA_PATH, embedding_function=get_embedding_function()
+        client=chroma_client,
+        persist_directory=CHROMA_PATH,
+        embedding_function=get_embedding_function()
     )
+
     print(dir(db))
 
     # Calculate Page IDs.
