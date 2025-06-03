@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ChromaDB Chatbot</title>
+  </head>
+  <body>
+    <h1>ChromaDB Chatbot</h1>
+    <input id="query" placeholder="Ask your question..." />
+    <button onclick="ask()">Ask</button>
+    <pre id="response"></pre>
+
+    <script>
+      async function ask() {
+        const query = document.getElementById("query").value;
+        const res = await fetch(
+          `http://localhost:8000/query?q=${encodeURIComponent(query)}`
+        );
+        const data = await res.json();
+        document.getElementById("response").innerText = data.response;
+      }
+    </script>
+  </body>
+</html>
